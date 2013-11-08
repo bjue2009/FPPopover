@@ -50,6 +50,7 @@
 @property(nonatomic,assign) CGFloat alpha;
 
 /** @brief The tint of the popover. **/
+@property(nonatomic,assign) UIColor *backgroundColor;
 @property(nonatomic,assign) FPPopoverTint tint;
 
 /** @brief Popover border, default is YES **/

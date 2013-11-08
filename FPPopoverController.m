@@ -21,6 +21,10 @@
     
     BOOL _shadowsHidden;
     CGColorRef _shadowColor;
+
+    double _backgroundRed;
+    double _backgroundGreen;
+    double _backgroundBlue;
 }
 @end
 
@@ -70,6 +74,11 @@
     
     _deviceOrientation = [UIDevice currentDevice].orientation;
     
+}
+
+- (void)setBackgroundColor:(UIColor*)color {
+    self.backgroundColor = color;
+    [color getRed:&_backgroundRed green:&_backgroundGreen blue:&_backgroundBlue];
 }
 
 -(void)removeObservers
