@@ -39,14 +39,20 @@ typedef enum {
     FPPopoverLightGrayTint,
     FPPopoverGreenTint,
     FPPopoverRedTint,
+    FPPopoverCustomTint,
     FPPopoverDefaultTint = FPPopoverBlackTint
 } FPPopoverTint;
 
-@interface FPPopoverView : UIView
+@interface FPPopoverView : UIView {
+    float _red;
+    float _green;
+    float _blue;
+}
 
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic,assign) CGPoint relativeOrigin;
 @property(nonatomic,assign) FPPopoverTint tint;
+@property(nonatomic,assign) float red,green,blue;
 @property(nonatomic,assign) BOOL draw3dBorder;
 @property(nonatomic,assign) BOOL border; //default YES
 

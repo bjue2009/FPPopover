@@ -36,6 +36,9 @@
 @synthesize tint = _tint;
 @synthesize draw3dBorder = _draw3dBorder;
 @synthesize border = _border;
+@synthesize red = _red;
+@synthesize green = _green;
+@synthesize blue = _blue;
 
 -(void)dealloc
 {
@@ -264,79 +267,69 @@
 
 
 
--(CGGradientRef)newGradient
-{
+-(CGGradientRef)newGradient {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 
     // make a gradient
     CGFloat colors[8];
-    
-    if(self.tint == FPPopoverBlackTint)
-    {
-        if(_arrowDirection == FPPopoverArrowDirectionUp)
-        {
+
+    if (self.tint == FPPopoverCustomTint) {
+        colors[0] = _red; colors[1] = _green; colors[2] = _blue;
+        colors[4] = _red; colors[5] = _green; colors[6] = _blue;
+        colors[3] = colors[7] = 1.0;
+    }
+    if(self.tint == FPPopoverBlackTint) {
+        if(_arrowDirection == FPPopoverArrowDirectionUp) {
             colors[0] = colors[1] = colors[2] = 0.6;
             colors[4] = colors[5] = colors[6] = 0.1;
             colors[3] = colors[7] = 1.0;
         }
-        else
-        {
+        else {
             colors[0] = colors[1] = colors[2] = 0.4;
             colors[4] = colors[5] = colors[6] = 0.1;
             colors[3] = colors[7] = 1.0;
         }        
     }
     
-    else if(self.tint == FPPopoverLightGrayTint)
-    {
-        if(_arrowDirection == FPPopoverArrowDirectionUp)
-        {
+    else if(self.tint == FPPopoverLightGrayTint) {
+        if(_arrowDirection == FPPopoverArrowDirectionUp) {
             colors[0] = colors[1] = colors[2] = 0.8;
             colors[4] = colors[5] = colors[6] = 0.3;
             colors[3] = colors[7] = 1.0;
         }
-        else
-        {
+        else {
             colors[0] = colors[1] = colors[2] = 0.6;
             colors[4] = colors[5] = colors[6] = 0.1;
             colors[3] = colors[7] = 1.0;
         }        
     }
-    else if(self.tint == FPPopoverRedTint)
-    {
-        if(_arrowDirection == FPPopoverArrowDirectionUp)
-        {
+    else if(self.tint == FPPopoverRedTint) {
+        if(_arrowDirection == FPPopoverArrowDirectionUp) {
             colors[0] = 0.72; colors[1] = 0.35; colors[2] = 0.32;
             colors[4] = 0.36; colors[5] = 0.0;  colors[6] = 0.09;
             colors[3] = colors[7] = 1.0;
 
         }
-        else
-        {
+        else {
             colors[0] = 0.82; colors[1] = 0.45; colors[2] = 0.42;
             colors[4] = 0.36; colors[5] = 0.0;  colors[6] = 0.09;
             colors[3] = colors[7] = 1.0;
         }        
     }
-    
-    else if(self.tint == FPPopoverGreenTint)
-    {
-        if(_arrowDirection == FPPopoverArrowDirectionUp)
-        {
+    else if(self.tint == FPPopoverGreenTint) {
+        if(_arrowDirection == FPPopoverArrowDirectionUp) {
             colors[0] = 0.35; colors[1] = 0.72; colors[2] = 0.17;
             colors[4] = 0.18; colors[5] = 0.30;  colors[6] = 0.03;
             colors[3] = colors[7] = 1.0;
             
         }
-        else
-        {
+        else {
             colors[0] = 0.45; colors[1] = 0.82; colors[2] = 0.27;
             colors[4] = 0.18; colors[5] = 0.30;  colors[6] = 0.03;
             colors[3] = colors[7] = 1.0;
         }        
     }
-    else if(self.tint == FPPopoverWhiteTint)
-    {
+    else if(self.tint == FPPopoverWhiteTint) {
         colors[0] = colors[1] = colors[2] = 1.0;
         colors[0] = colors[1] = colors[2] = 1.0;
         colors[3] = colors[7] = 1.0;
@@ -389,24 +382,22 @@
     
     CGGradientRelease(gradient);
     //fill the other part of path
-    if(self.tint == FPPopoverBlackTint)
-    {
+    if (self.tint == FPPopoverCustomTint) {
+        CGContextSetRGBFillColor(ctx, _red, _green, _blue, 1.0);
+    }
+    if(self.tint == FPPopoverBlackTint) {
         CGContextSetRGBFillColor(ctx, 0.1, 0.1, 0.1, 1.0);        
     }
-    else if(self.tint == FPPopoverLightGrayTint)
-    {
+    else if(self.tint == FPPopoverLightGrayTint) {
         CGContextSetRGBFillColor(ctx, 0.3, 0.3, 0.3, 1.0);        
     }
-    else if(self.tint == FPPopoverRedTint)
-    {
+    else if(self.tint == FPPopoverRedTint) {
         CGContextSetRGBFillColor(ctx, 0.36, 0.0, 0.09, 1.0);        
     }
-    else if(self.tint == FPPopoverGreenTint)
-    {
+    else if(self.tint == FPPopoverGreenTint) {
         CGContextSetRGBFillColor(ctx, 0.18, 0.30, 0.03, 1.0);        
     }
-    else if(self.tint == FPPopoverWhiteTint)
-    {
+    else if(self.tint == FPPopoverWhiteTint) {
         CGContextSetRGBFillColor(ctx, 1, 1, 1, 1.0);
     }
 
