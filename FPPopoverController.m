@@ -77,7 +77,6 @@
 }
 
 - (void)setBackgroundColor:(UIColor*)color {
-    self.backgroundColor = color;
     [color getRed:&_backgroundRed green:&_backgroundGreen blue:&_backgroundBlue alpha:nil];
     _contentView.red = _backgroundRed;
     _contentView.green = _backgroundGreen;
