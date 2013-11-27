@@ -551,7 +551,7 @@
     }
     
     
-    if([[UIApplication sharedApplication] isStatusBarHidden] == NO)
+    if([[UIApplication sharedApplication] isStatusBarHidden] == NO && [[[UIDevice currentDevice]systemVersion]intValue]>6)
     {
         if(r.origin.y <= 20) r.origin.y += 20;
     }
