@@ -130,6 +130,10 @@
         }];
 
         self.contentSize = CGSizeMake(200, 300); //default size
+        _landscapeContentSize = CGSizeZero;
+        _landscapeOrigin = CGPointZero;
+        _portraitContentSize = CGSizeZero;
+        _portraitOrigin = CGPointZero;
 
         _contentView = [[FPPopoverView alloc] initWithFrame:CGRectMake(0, 0, self.contentSize.width, self.contentSize.height)];
 
@@ -439,12 +443,12 @@
 - (CGRect)bestArrowDirectionAndFrameFromView:(UIView*)v {
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        if (_landscapeOrigin!=nil) self.origin = _landscapeOrigin;
-        if (_landscapeContentSize!=nil) self.contentSize = _landscapeContentSize;
+        if (!CGPointEqualToPoint(_landscapeOrigin, CGPointZero)) self.origin = _landscapeOrigin;
+        if (!CGSizeEqualToSize(_landscapeContentSize, CGSizeZero)) self.contentSize = _landscapeContentSize;
     }
     else if (UIInterfaceOrientationIsPortrait(orientation)) {
-        if (_portraitOrigin!=nil) self.origin = _portraitOrigin;
-        if (_portraitContentSize!=nil) self.contentSize = _portraitContentSize;
+        if (!CGPointEqualToPoint(_portraitOrigin, CGPointZero)) self.origin = _portraitOrigin;
+        if (!CGSizeEqualToSize(_portraitContentSize, CGSizeZero)) self.contentSize = _portraitContentSize;
     }
 
     // thanks @Niculcea
