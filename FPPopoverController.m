@@ -164,7 +164,7 @@
 - (void)setPortraitOrigin:(CGPoint)point animated:(BOOL)animated {
     _portraitOrigin = point;
 
-    UIInterfaceOrientation *orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsPortrait(orientation)) {
         if (animated) {
             [UIView animateWithDuration:0.2 animations:^{
@@ -182,7 +182,7 @@
 - (void)setPortraitContentSize:(CGSize)size animated:(BOOL)animated {
     _portraitContentSize = size;
 
-    UIInterfaceOrientation *orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsPortrait(orientation)) {
         if (animated) {
             [UIView animateWithDuration:0.2 animations:^{
@@ -200,7 +200,7 @@
 - (void)setLandscapeOrigin:(CGPoint)point animated:(BOOL)animated {
     _landscapeOrigin = point;
 
-    UIInterfaceOrientation *orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         if (animated) {
             [UIView animateWithDuration:0.2 animations:^{
@@ -218,7 +218,7 @@
 - (void)setLandscapeContentSize:(CGSize)size animated:(BOOL)animated {
     _landscapeContentSize = size;
 
-    UIInterfaceOrientation *orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         if (animated) {
             [UIView animateWithDuration:0.2 animations:^{
@@ -437,7 +437,7 @@
 
 #pragma mark Space management
 - (CGRect)bestArrowDirectionAndFrameFromView:(UIView*)v {
-    UIInterfaceOrientation *orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         if (_landscapeOrigin!=nil) self.origin = _landscapeOrigin;
         if (_landscapeContentSize!=nil) self.contentSize = _landscapeContentSize;
