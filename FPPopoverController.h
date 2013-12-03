@@ -25,8 +25,7 @@
           shouldDismissVisiblePopover:(FPPopoverController*)visiblePopoverController;
 @end
 
-@interface FPPopoverController : UIViewController
-{
+@interface FPPopoverController : UIViewController {
     UIView *_parentView;
 }
 //ARC-enable and disable support
@@ -45,6 +44,10 @@
 
 @property(nonatomic,assign) FPPopoverArrowDirection arrowDirection;
 
+@property(nonatomic,assign) CGSize landscapContenteSize;
+@property(nonatomic,assign) CGPoint landscapeOrigin;
+@property(nonatomic,assign) CGSize portraitContentSize;
+@property(nonatomic,assign) CGPoint portraitOrigin;
 @property(nonatomic,assign) CGSize contentSize;
 @property(nonatomic,assign) CGPoint origin;
 @property(nonatomic,assign) CGFloat alpha;
@@ -59,8 +62,7 @@
 /** @brief Initialize the popover with the content view controller
  **/
 -(id)initWithViewController:(UIViewController*)viewController;
--(id)initWithViewController:(UIViewController*)viewController
-				   delegate:(id<FPPopoverControllerDelegate>)delegate;
+-(id)initWithViewController:(UIViewController*)viewController delegate:(id<FPPopoverControllerDelegate>)delegate;
 
 /** @brief Presenting the popover from a specified view **/
 -(void)presentPopoverFromView:(UIView*)fromView;
@@ -80,6 +82,11 @@ typedef void (^FPPopoverCompletion)();
 
 /** @brief Refresh popover **/
 -(void)setupView;
+
+- (void)setPortraitOrigin:(CGPoint)point animated:(BOOL)animated;
+- (void)setPortraitContentSize:(CGSize)size animated:(BOOL)animated;
+- (void)setLandscapeOrigin:(CGPoint)point animated:(BOOL)animated;
+- (void)setLandscapeContentSize:(CGSize)size animated:(BOOL)animated;
 
 
 @end
