@@ -44,7 +44,7 @@
 
 @property(nonatomic,assign) FPPopoverArrowDirection arrowDirection;
 
-@property(nonatomic,assign) CGSize landscapeContenteSize;
+@property(nonatomic,assign) CGSize landscapeContentSize;
 @property(nonatomic,assign) CGPoint landscapeOrigin;
 @property(nonatomic,assign) CGSize portraitContentSize;
 @property(nonatomic,assign) CGPoint portraitOrigin;
